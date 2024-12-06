@@ -1,7 +1,13 @@
-<div>
+<div class="text-center my-5">
   <h2>Welcome to reservations portal!</h2>
-  <button [routerLink]="['/new']" routerLinkActive="router-link-active">
+  <button
+    class="btn btn-primary mx-3 mt-3"
+    [routerLink]="['/new']"
+    routerLinkActive="router-link-active"
+  >
     New Reservation
   </button>
-  <button [routerLink]="['/list']">View Reservation List</button>
+  <button class="btn btn-primary mx-3 mt-3" [routerLink]="['/list']">
+    View Reservation List
+  </button>
 </div>
