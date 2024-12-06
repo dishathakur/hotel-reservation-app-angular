@@ -1,7 +1,17 @@
+<app-home></app-home>
+
 <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
   <div>
     <label>Guest Name</label>
     <input type="text" formControlName="guestName" placeholder="Guest Name" />
+    <div
+      *ngIf="
+        reservationForm.get('guestName')?.invalid &&
+        reservationForm.get('guestName')?.touched
+      "
+    >
+      Guest name is required
+    </div>
   </div>
   <div>
     <label>Guest Email</label>
@@ -10,6 +20,14 @@
       formControlName="guestEmail"
       placeholder="Guest Email"
     />
+    <p
+      *ngIf="
+        reservationForm.get('guestEmail')?.invalid &&
+        reservationForm.get('guestEmail')?.touched
+      "
+    >
+      Invalid email
+    </p>
   </div>
   <div>
     <label>Check-In Date</label>
@@ -18,6 +36,14 @@
       formControlName="checkInDate"
       placeholder="Check In Date"
     />
+    <p
+      *ngIf="
+        reservationForm.get('checkInDate')?.invalid &&
+        reservationForm.get('checkInDate')?.touched
+      "
+    >
+      chec in date is required
+    </p>
   </div>
   <div>
     <label>Check-Out Date</label>
@@ -31,5 +57,5 @@
     <label>Room Number</label>
     <input type="number" formControlName="roomNo" placeholder="Room Number" />
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit" [disabled]="reservationForm.invalid">Submit</button>
 </form>
