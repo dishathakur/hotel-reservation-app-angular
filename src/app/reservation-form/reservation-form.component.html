@@ -42,7 +42,7 @@
         reservationForm.get('checkInDate')?.touched
       "
     >
-      chec in date is required
+      check in date is required
     </p>
   </div>
   <div>
@@ -52,10 +52,26 @@
       formControlName="checkOutDate"
       placeholder="Check Out Date"
     />
+    <p
+      *ngIf="
+        reservationForm.get('checkOutDate')?.invalid &&
+        reservationForm.get('checkOutDate')?.touched
+      "
+    >
+      check out date is required
+    </p>
   </div>
   <div>
     <label>Room Number</label>
     <input type="number" formControlName="roomNo" placeholder="Room Number" />
+    <p
+      *ngIf="
+        reservationForm.get('roomNo')?.invalid &&
+        reservationForm.get('roomNo')?.touched
+      "
+    >
+      room nmber is required
+    </p>
   </div>
   <button type="submit" [disabled]="reservationForm.invalid">Submit</button>
 </form>

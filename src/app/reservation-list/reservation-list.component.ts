@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservations } from '../models/reservations';
 import { ReservationsService } from '../reservations/reservations.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-list',
@@ -10,7 +11,10 @@ import { ReservationsService } from '../reservations/reservations.service';
 export class ReservationListComponent implements OnInit {
   reservations: Reservations[] = [];
 
-  constructor(private reservationService: ReservationsService) {}
+  constructor(
+    private reservationService: ReservationsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.reservations = this.reservationService.getAllReservations();
@@ -18,5 +22,9 @@ export class ReservationListComponent implements OnInit {
 
   deleteReservation(id: string): void {
     this.reservationService.deleteReservations(id);
+  }
+
+  editReservation(id: string): void {
+    this.router.navigate(['/edit', id]);
   }
 }
